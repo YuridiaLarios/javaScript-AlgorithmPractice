@@ -1,0 +1,151 @@
+//Reverse any provided string.
+function reverseString(str) {
+  var array = str.split('');
+  var reversedString ='';
+  for(var i=array.length-1; i >=0; i--){
+    reversedString += array[i];
+  }
+
+  return reversedString;
+}
+
+reverseString("Greetings from Earth");
+
+
+// Return the factorial of the provided integer.
+//If the integer is represented with the letter n,
+// a factorial is the product of all positive integers less than or equal to n.
+
+function factorialize(num) {
+  var factorial = 1;
+  for(var i=num; i>0; i--){
+    factorial *= i;
+  }
+  return factorial;
+}
+
+factorialize(5);
+
+
+//Return true if the given string is a palindrome. Otherwise, return false.
+function palindrome(str) {
+  var cleanStr = str.replace(/\s+/g,'');
+  cleanStr = str.replace(/[\W_]+/g,'');
+  cleanStr = cleanStr.toLowerCase();
+  var array = cleanStr.split('');
+  var lastPosition = (array.length-1);
+  var matching = true;
+
+    for(var i=0; ((i <= lastPosition) && (matching)); i++){
+      var currentInitial = array[i];
+      var currentLast = array[lastPosition];
+      console.log("currentIntitial: " + currentInitial);
+      console.log("currentLast: " + currentLast);
+        if(currentInitial != currentLast){
+          matching = false;
+          console.log("letters don't match");
+        }
+      lastPosition--;
+    }
+    return matching;
+  }
+palindrome("never odd or even");
+
+
+//Return the length of the longest word in the provided sentence.
+function findLongestWord(str) {
+  var space = ' ';
+  var arrayOfString = str.split(space);
+  var longestString = 0;
+    for(var i=0; i < arrayOfString.length; i++){
+      if(longestString < arrayOfString[i].length){
+        longestString = arrayOfString[i].length;
+    }
+  }
+  return longestString;
+}
+
+findLongestWord("The quick brown fox jumped over the lazy dog");
+
+
+
+
+
+// Return the provided string with the first letter of each word capitalized.
+// Make sure the rest of the word is in lower case.
+// For the purpose of this exercise, you should also capitalize connecting words like "the" and "of".
+
+
+
+function titleCase(str) {
+  var space = ' ';
+  var originalArray = str.split(space);
+  var currentString = '';
+    for(var i=0; i < originalArray.length; i++){
+      currentString = originalArray[i].toLowerCase();
+      var firstLetter = currentString.charAt(0);
+      var upperLetter = firstLetter.toUpperCase();
+      currentString = currentString.replace(firstLetter, upperLetter);
+      originalArray[i] = currentString;
+    }
+  return originalArray.join(' ');
+}
+titleCase("HERE IS MY HANDLE HERE IS MY SPOUT");
+
+
+
+
+
+//Return an array consisting of the largest number from each provided sub-array.
+//For simplicity, the provided array will contain exactly 4 sub-arrays.
+function largestOfFour(arr) {
+  var largestNumsArray = [];
+  for(var i=0; i<arr.length; i++){
+    var highestNum = arr[i][0];
+      for(var j=0; j<4; j++){
+        if(arr[i][j]>highestNum){
+          highestNum = arr[i][j];
+        }
+      }
+    largestNumsArray[i]=highestNum;
+    }
+  return largestNumsArray;
+}
+
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+
+
+// Check if a string (first argument, str) ends with the given target string (second argument, target).
+//This challenge can be solved with the .endsWith() method, which was introduced in ES2015.
+// But for the purpose of this challenge, we would like you to use one of the JavaScript substring methods instead.
+// "Never give up and good luck will find you."
+// -- Falcor
+
+function confirmEnding(str, target) {
+  var targetLettersCount = target.length;
+  var endOfString = str.substr(-targetLettersCount);
+    if(endOfString == target){
+      return true;
+    }
+    else return false;
+  }
+confirmEnding("Bastian", "n");
+
+
+
+
+
+//Repeat a given string (first argument) num times (second argument).
+// Return an empty string if num is not a positive number.
+
+function repeatStringNumTimes(str, num) {
+  var repeatedString = "";
+    if (num > 0){
+      for(var i=0; i<num; i++){
+        repeatedString += str;
+      }
+    }
+  return repeatedString;
+}
+repeatStringNumTimes("abc", 3);
