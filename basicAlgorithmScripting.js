@@ -149,3 +149,41 @@ function repeatStringNumTimes(str, num) {
   return repeatedString;
 }
 repeatStringNumTimes("abc", 3);
+
+
+
+
+
+/*Truncate a string (first argument) if it is longer than the given maximum string length (second argument). Return the truncated string with a ... ending.
+
+Note that inserting the three dots to the end will add to the string length.
+
+However, if the given maximum string length num is less than or equal to 3, then the addition of the three dots does not add to the string length in determining the truncated string.*/
+function truncateString(str, num) {
+  // Clear out that junk in your trunk
+  if(str.length > num && num>3){
+    return str.slice(0, num-3) + "...";
+  }
+  if(num >= str.length){
+    return str;
+  }
+  else{
+    return str.slice(0,num) + "...";
+  }
+}
+
+truncateString("A-", 1);
+
+/* Advance solution
+function truncateString(str, num) {
+  if (str.length <= num) {
+    return str;
+  } else {
+    return str.slice(0, num > 3 ? num - 3 : num) + '...';
+  }
+}
+
+if statement above fails, we move to the else, where we are going to return a "slice" of the string. The slice method extracts a section of a string and returns a new string. Here we pass 0 as the starting point for our slice. To determine the endpoint, we use a ternary operator: num > 3 ? num - 3 : num. In our ternary, if num is larger than 3, we must factor in the three dots to our total length, and thus we end our slice at num-3. If num is less than or equal to 3, our slice gets an end variable of just num. Finally, the '...' is appended to the end of our new string and is returned.
+*/
+
+
