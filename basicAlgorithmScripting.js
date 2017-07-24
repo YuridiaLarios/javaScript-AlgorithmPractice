@@ -325,3 +325,110 @@ We use method-chaining to invoke one method after another to solve the problem i
 Then we use sort() with the callback arrow function (a, b) => return a-b to sort the numbers in ascending order
 Lastly we return the postion or index of num in the array with the indexOf() method
 */
+
+
+
+
+/*
+Seek and Destroy
+
+You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. 
+Remove all elements from the initial array that are of the same value as these arguments.
+*/
+
+
+function destroyer(arr) {
+  var argsArray = Array.from(arguments);
+  
+  for(var i=1; i< argsArray.length; i++){
+    for(var j=0; j <= arr.length-1; j++){
+      if(argsArray[i] == arr[j]){
+        delete arr[j];
+      }
+    }
+  }
+  
+  var newArray = arr.filter(function(value){
+    return Boolean(value);
+  });
+  
+    
+  return newArray;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+/*
+Intermediate solution looks better, the reason is that my solution will filter 0
+even if it wasn't part of the args.
+
+function destroyer(arr) {
+  var args = Array.from(arguments).slice(1);
+  return arr.filter(function(val) {
+    return !args.includes(val);
+  });
+}
+*/
+
+
+
+
+
+/*
+Caesars Cipher
+
+One of the simplest and most widely known ciphers is a Caesar cipher, also known as a shift cipher. In a shift cipher the meanings of the letters are shifted by some set amount.
+
+A common modern use is the ROT13 cipher, where the values of the letters are shifted by 13 places. Thus 'A' ↔ 'N', 'B' ↔ 'O' and so on.
+
+Write a function which takes a ROT13 encoded string as input and returns a decoded string.
+
+All letters will be uppercase. Do not transform any non-alphabetic character (i.e. spaces, punctuation), but do pass them on.
+
+*/
+function rot13(str) {
+  // Split str into a character array and Iterate over each character in the array
+  var newArray = str.split('').map.call(str, function(letter) {
+      // Convert each letter to a character code
+      var x = letter.charCodeAt(0);
+      // Checks if character lies between A-Z
+      if (x < 65 || x > 90) {
+        return String.fromCharCode(x);  // Return un-converted character
+      }
+      if (x < 78) {
+        return String.fromCharCode(x + 13);
+      }
+      else
+        return String.fromCharCode(x - 13);
+    });
+   return newArray.join('');  // Rejoin the array into a string
+}
+
+// Change the inputs below to test
+rot13("SERR CVMMN!");
+
+/*
+function rot13(str) { // LBH QVQ VG!
+    
+  var stringArray = str.split('');
+    
+  for(var i=0; i<stringArray.length; i++){
+    for(var j=0; j<stringArray[i].length; j++){
+      
+      var root13Value;
+      root13Value = stringArray[i][j].charCodeAt(j);
+      
+      if(root13Value <= 77 && root13Value >= 65){
+          stringArray[i] = String.fromCharCode(root13Value+13);
+      }
+       if(root13Value > 77 &&  root13Value <= 122){
+          stringArray[i] = String.fromCharCode(root13Value-13);
+      }    
+    }    
+  }
+  
+  return stringArray.join('');
+}
+
+// Change the inputs below to test
+rot13("SERR CVMMN!");
+*/
