@@ -1,0 +1,127 @@
+/*
+Sum All Numbers in a Range
+
+We'll pass you an array of two numbers. Return the sum of those two numbers and all numbers between them.
+The lowest number will not always come first.
+*/
+
+function sumAll(arr) {
+  var minVal = Math.min(arr[0], arr[1]);
+  var maxVal = Math.max(arr[1], arr[0]);
+  var sum = 0;
+  for(var i = minVal; i<= maxVal; i++){
+    sum += i;
+  }
+  return sum;
+}
+
+sumAll([1, 4]);
+
+
+
+
+
+
+
+/*
+Diff Two Arrays
+
+
+Compare two arrays and return a new array with any items only found in one of the two given arrays, but not both.
+In other words, return the symmetric difference of the two arrays.
+*/
+function diffArray(arr1, arr2) {
+  var newArr = [];
+  // Same, same; but different.
+  var concated = arr1.concat(arr2); 
+  
+  return concated.filter(function(values) {
+    return !arr2.includes(values) || !arr1.includes(values);
+  }); 
+    
+//   var filteredTwice = arr2.filter(function(values) {
+//     return !arr1.includes(values);
+//   }); 
+  
+//   return filteredTwice.concat(filteredOnce);
+}
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+
+
+
+
+
+
+
+// CHALLENGING: create a program that converts an integer to a Roman Numeral.
+
+var convertToRoman = function(num) {
+
+  var decimalValue = [ 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 ];
+  var romanNumeral = [ 'M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I' ];
+
+  var romanized = '';
+
+  for (var index = 0; index < decimalValue.length; index++) {
+    while (decimalValue[index] <= num) {
+      romanized += romanNumeral[index];
+      num -= decimalValue[index];
+    }
+  }
+
+  return romanized;
+}
+
+// test here
+convertToRoman(36);
+
+
+
+
+
+
+
+
+
+
+//Write an algorithm that will take an array for the first argument,
+//and return an array with all the objects that matches all the properties and values in the Object passed as second parameter.
+function whatIsInAName(collection, source) {
+  // What's in a name?
+  var arr = [];
+  // Only change code below this line
+  var keySourceArr = Object.keys(source);
+  return collection.filter(function (currentObject) {  //collection is an array, filter goes                                                           thru each value of collection
+           for(var i = 0; i < keySourceArr.length; i++) { //iterate true the # of pairs
+             
+             //check if the object in the collection doesn't have the key 
+             // or the property value doesn't match the value in source.
+             if(!currentObject.hasOwnProperty(keySourceArr[i]) ||
+                currentObject[keySourceArr[i]] !== source[keySourceArr[i]]) {
+              return false;
+          }
+             
+        }
+    return true;
+  });
+  
+  // Only change code above this line
+}
+
+whatIsInAName([{ first: "Romeo", last: "Montague" }, 
+               { first: "Mercutio", last: null }, 
+               { first: "Tybalt", last: "Capulet" }], 
+              
+               { last: "Capulet"});
+
+
+
+//var valuesArr = Object.values(source);
+//    var numberOfSourceObjects = valuesArr.length;
+//   console.log("array of enumerated values = " + valuesArr.join(", "));
+//   for(var i=0; i<collection.length; i++){
+//     var currentObject = collection[i];
+//     if(currentObject.hasOwnProperty("last")){
+//        if(currentObject.)
+//   }
