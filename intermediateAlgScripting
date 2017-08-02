@@ -125,3 +125,60 @@ whatIsInAName([{ first: "Romeo", last: "Montague" },
 //     if(currentObject.hasOwnProperty("last")){
 //        if(currentObject.)
 //   }
+
+
+
+
+
+
+
+
+
+
+//Search and Replace
+
+//You will create a program that takes a sentence, then search for a word in it and replaces it for a new one 
+//while preserving the initial uppercase if there is one.\
+
+function myReplace(str, before, after) {
+  
+  var arr = str.split(' ');
+  var index = arr.indexOf(before);
+  if(index > -1){
+    if(before.toLowerCase() === before){
+      arr[index] = after;
+    } else {
+      
+      arr[index] = after.charAt(0).toUpperCase() + after.substr(1);
+    }
+  }
+  
+  return arr.join(' ');
+}
+
+myReplace("He is Sleeping on the couch", "Sleeping", "sitting");
+
+/*
+
+better answer: using the knowledge of .replace method and is better to use slice b/c
+it has better performance
+
+function myReplace(str, before, after) {
+  // Find index where before is on string
+  var index = str.indexOf(before);
+  // Check to see if the first letter is uppercase or not
+  if (str[index] === str[index].toUpperCase()) {
+    // Change the after word to be capitalized before we use it.
+    after = after.charAt(0).toUpperCase() + after.slice(1);
+  }
+  // Now replace the original str with the edited one.
+  str = str.replace(before, after);
+
+  return str;
+}
+
+// test here
+myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
+
+
+*/
