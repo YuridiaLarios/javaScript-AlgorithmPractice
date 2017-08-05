@@ -215,3 +215,29 @@ function fearNotLetter(str) {
 }
 
 fearNotLetter("abce");
+
+
+
+
+
+
+
+// This program is very simple, the trick is to understand what a boolean primitive is. The programs requires a true or false answer.
+function booWho(bool) {
+  // What is the new fad diet for ghost developers? The Boolean.
+  
+  return (bool ===true || bool ===false);
+
+}
+
+booWho(NaN);
+
+/*
+function booWho(bool) {
+  return typeof bool === 'boolean';
+}
+
+// test here
+booWho(null);
+*/
+
