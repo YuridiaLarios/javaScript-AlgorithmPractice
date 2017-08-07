@@ -241,3 +241,39 @@ function booWho(bool) {
 booWho(null);
 */
 
+
+
+
+
+
+
+
+
+
+// Sorted Union
+//The program has to return a new array of unique values from two original arrays in the order they show up. 
+//So there is not sorting required, and there shouldn't be any duplicates.
+
+function uniteUnique(arr) {
+  var argsArray = Array.from(arguments).slice(1).reduce(function(a,b){
+    return a.concat(b);
+  },[]);
+  
+  arr.push(argsArray.filter(function(value){
+      return !arr.includes(value);
+  }));
+  return arr.reduce(function(a,b){
+    return a.concat(b);
+  },[]);
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+/*
+//Use reduce function to flatten the array
+  newArr = args.reduce(function(arrA,arrB){
+  //Apply filter to remove the duplicate elements in the array
+    return arrA.concat(arrB.filter(function(i){
+      return arrA.indexOf(i) === -1;
+    }));
+  });
+*/
