@@ -430,3 +430,54 @@ function spinalCase(str) {
 }
 
 spinalCase("thisIsSpinalTap");
+
+
+
+
+
+
+
+
+/****************************************************************************************************************************
+Sum All Odd Fibonacci Numbers
+//You will need to gather all the Fibonacci numbers and then check for the odd ones. 
+//Once you get the odd ones then you will add them all. 
+//The last number should be the number given as a parameter if it actually happens to be an off Fibonacci number.
+*****************************************************************************************************************************/
+
+function sumFibs(num) {
+  
+  // create the fibbonaci array
+    var fibArray = [1,1];
+    var n = 0;
+    for(var i=2; i <= num; i += fibArray[n]){
+    n += 1;
+    fibArray.push(i);
+  }
+
+  // filter values for only odd values and less than given number
+  var array = fibArray.filter(function(value){
+          return (value % 2 != 0) && value <= num;       
+                  });
+  // itare thru to  add numbers
+  var sum = 0;
+    for(var j=0; j<array.length; j++){
+      sum += array[j];
+    }
+  return sum;
+}
+
+sumFibs(1000);
+
+
+/*
+learn to use .reduce()
+  // return the sum of odd numbers from the array
+  var rum = arrFib.reduce(function(prev, curr) {
+      if (curr%2 !== 0) return prev + curr;
+      else return prev;
+    });
+
+  return sum;
+}
+*/
