@@ -571,3 +571,28 @@ function pairElement(str) {
 
 pairElement("GCG");
 
+
+
+
+
+
+
+/****************************************************************************************************************************
+Pig Latin
+Translate the provided string to pig latin.
+If a word begins with a vowel you just add "way" to the end.
+*****************************************************************************************************************************
+function translatePigLatin(str) {
+  if(str.charAt(0) == 'a' || str.charAt(0) == 'e' ||  str.charAt(0) == 'i' ||
+     str.charAt(0) == '0' ||  str.charAt(0) == 'u' ){
+    return str + "way";
+  } else if(str.charAt(1) == 'a' || str.charAt(1) == 'e' ||  str.charAt(1) == 'i' ||
+     str.charAt(1) == 'o' ||  str.charAt(1) == 'u' ){
+    var tempChar = str.charAt(0);
+    return str.substr(1,str.length-1) + tempChar +"ay";
+  } else 
+      return str.substr(2,str.length-1) + str.charAt(0) + str.charAt(1) + "ay";
+  return "something went wrong";
+}
+
+translatePigLatin("glove");
