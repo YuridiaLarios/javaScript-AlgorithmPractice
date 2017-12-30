@@ -536,3 +536,38 @@ function dropElements(arr, func) {
 }
 
 */
+
+
+
+/****************************************************************************************************************************
+DNA PAIRING
+Base pairs are a pair of AT and CG. Match the missing element to the provided character.
+Return the provided character as the first element in each array.
+For example, for the input GCG, return [["G", "C"], ["C","G"],["G", "C"]]
+*****************************************************************************************************************************
+function dnaPair(char){
+  switch (char) {
+    case 'A':
+      return 'T';
+    case 'T':
+      return 'A';
+    case 'C':
+      return 'G';
+    case 'G':
+      return 'C';
+  }
+}
+
+function pairElement(str) {
+  var dnaSeqArray = [];
+  var length = str.length-1;
+  for(var i = 0; i <= length; i++){
+    var currentPairArray = [str.charAt(i)];
+    currentPairArray.push(dnaPair(str.charAt(i)));
+    dnaSeqArray.push(currentPairArray);
+  }
+  return dnaSeqArray;
+}
+
+pairElement("GCG");
+
