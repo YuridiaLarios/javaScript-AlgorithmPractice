@@ -571,6 +571,21 @@ function pairElement(str) {
 
 pairElement("GCG");
 
+/*
+//Advance way
+function pair(str) {
+  var transform = {
+    'T': ['T', 'A'],
+    'A': ['A', 'T'],
+    'C': ['C', 'G'],
+    'G': ['G', 'C']
+  };
+  
+  return str.split('')
+            .map(x => transform[x]);
+}﻿
+
+*/
 
 
 
